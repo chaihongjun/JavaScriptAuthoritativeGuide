@@ -1068,4 +1068,451 @@ this
 undefined
 </pre></div>
 
-<h1 id="_2">对象和数组的初始化表达式<a class="headerlink" href="#_2" title="Permanent link"></a></h1></article></body></html>
+<h1 id="_2">对象和数组的初始化表达式<a class="headerlink" href="#_2" title="Permanent link"></a></h1>
+<div class="codehilite"><pre>[]   //空数组
+[1+2,3+4]   //[3,7]
+var arr=[1,,,5] //[1,undefined,undefined,5]
+
+var q={}  //空对象
+</pre></div>
+
+<h1 id="_3">函数定义表达式<a class="headerlink" href="#_3" title="Permanent link"></a></h1>
+<p>某种意义上可以称为“函数直接量”，表达式的值是新定义的函数</p>
+<div class="codehilite"><pre>var func=function(x){}
+</pre></div>
+
+<h1 id="_4">属性访问表达式<a class="headerlink" href="#_4" title="Permanent link"></a></h1>
+<p>两种属性访问语法:
+<div class="codehilite"><pre>expression.identifier
+expression[expression] //适用于对象和数组
+</pre></div></p>
+<h1 id="_5">调用表达式<a class="headerlink" href="#_5" title="Permanent link"></a></h1>
+<h1 id="_6">对象创建表达式<a class="headerlink" href="#_6" title="Permanent link"></a></h1>
+<div class="codehilite"><pre>new Object()
+new Point(2,3)
+//如果没有参数
+new Object
+new Point
+</pre></div>
+
+<h1 id="_7">运算符概述<a class="headerlink" href="#_7" title="Permanent link"></a></h1>
+<p>A列表示运算符的结合性，L（从左至右）或R（从右至左）
+N列表示操作数的个数
+类型表示期望的操作数类型和运算符的结果类型</p>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">操作</th>
+<th align="center">A</th>
+<th align="center">N</th>
+<th align="center">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">++</td>
+<td align="center">前/后增量</td>
+<td align="center">R</td>
+<td align="center">1</td>
+<td align="center">leftval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">&ndash;</td>
+<td align="center">前/后减量</td>
+<td align="center">R</td>
+<td align="center">1</td>
+<td align="center">leftval-&gt;num</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">求反</td>
+<td align="center">R</td>
+<td align="center">1</td>
+<td align="center">num-&gt;num</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">转换为数字</td>
+<td align="center">R</td>
+<td align="center">1</td>
+<td align="center">num-&gt;num</td>
+</tr>
+<tr>
+<td align="center">~</td>
+<td align="center">按位求反</td>
+<td align="center">R</td>
+<td align="center">1</td>
+<td align="center">int-&gt;int</td>
+</tr>
+<tr>
+<td align="center">!</td>
+<td align="center">逻辑非</td>
+<td align="center">R</td>
+<td align="center">1</td>
+<td align="center">bool-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">delete</td>
+<td align="center">删除属性</td>
+<td align="center">R</td>
+<td align="center">1</td>
+<td align="center">leftval-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">typeof</td>
+<td align="center">检测操作数类型</td>
+<td align="center">R</td>
+<td align="center">1</td>
+<td align="center">any-&gt;str</td>
+</tr>
+<tr>
+<td align="center">void</td>
+<td align="center">返回undefined</td>
+<td align="center">R</td>
+<td align="center">1</td>
+<td align="center">any-&gt;underfined</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">*、/、%</td>
+<td align="center">乘、除、求余</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">num,num-&gt;num</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">+、-</td>
+<td align="center">加、减</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">num,num-&gt;num</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="center">字符串连接</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">str,str-&gt;str</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">&lt;&lt;</td>
+<td align="center">左移位</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">int,int-&gt;int</td>
+</tr>
+<tr>
+<td align="center">&gt;&gt;</td>
+<td align="center">有符号右移</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">int,int-&gt;int</td>
+</tr>
+<tr>
+<td align="center">&gt;&gt;&gt;</td>
+<td align="center">无符号右移</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">int,int-&gt;int</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">&lt;、&lt;=、&gt;、&gt;=</td>
+<td align="center">比较数字顺序</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">num,num-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">&lt;、&lt;=、&gt;、&gt;=</td>
+<td align="center">比较在字母表中的顺序</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">str,str-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">instanceof</td>
+<td align="center">检测对象类</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">obj,func-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">in</td>
+<td align="center">检测属性是存在</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">str,obj-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">==</td>
+<td align="center">判断相等</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">any,any-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">!=</td>
+<td align="center">判断不等</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">any,any-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">===</td>
+<td align="center">判断恒等</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">any,any-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">!==</td>
+<td align="center">判断非恒等</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">any,any-&gt;bool</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">&amp;</td>
+<td align="center">按位与</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">int,int-&gt;int</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">按位异或</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">int,int-&gt;int</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td align="center">按位或</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">int,int-&gt;int</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">&amp;&amp;</td>
+<td align="center">逻辑与</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">any,any-&gt;any</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">||</td>
+<td align="center">逻辑或</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">any,any-&gt;any</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">?:</td>
+<td align="center">条件运算符</td>
+<td align="center">R</td>
+<td align="center">3</td>
+<td align="center">bool,any,any-&gt;any</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">=</td>
+<td align="center">变量赋值或对象属性赋值</td>
+<td align="center">R</td>
+<td align="center">2</td>
+<td align="center">leftval,any-&gt;any</td>
+</tr>
+<tr>
+<td align="center">*=、/=、%=、+=、-=、&amp;=、^=、|=、&lt;&lt;=、&gt;&gt;=、&gt;&gt;&gt;=</td>
+<td align="center">变量赋值或对象属性赋值运算且赋值</td>
+<td align="center">R</td>
+<td align="center">2</td>
+<td align="center">leftval,any-&gt;any</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">,</td>
+<td align="center">忽略第一个操作数，返回第二个操作数</td>
+<td align="center">L</td>
+<td align="center">2</td>
+<td align="center">any,any-&gt;any</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">操作数的个数<a class="headerlink" href="#_8" title="Permanent link"></a></h2>
+<p>JavaScript大多数的运算符是一个二元运算符，操作数是两个。一元运算符只有一个操作数</p>
+<h2 id="_9">操作数类型和结果类型<a class="headerlink" href="#_9" title="Permanent link"></a></h2>
+<p>JavaScript运算符通常根据需要对操作数进行类型转换。
+<div class="codehilite"><pre>&quot;3&quot;*&quot;5&quot;  //结果为15， *操作符需要两个操作数是数字，因此做了转换
+</pre></div></p>
+<h2 id="_10">左值<a class="headerlink" href="#_10" title="Permanent link"></a></h2>
+<p>表达式只能出现在赋值运算符的左侧，对象属性和数组元素都是左值</p>
+<h2 id="_11">运算符的副作用<a class="headerlink" href="#_11" title="Permanent link"></a></h2>
+<p><div class="codehilite"><pre>++i
+i--
+</pre></div>
+包含隐式的赋值
+<div class="codehilite"><pre>delete o.i
+</pre></div>
+删除属性，类似给属性赋值undefined</p>
+<h2 id="_12">运算符优先级<a class="headerlink" href="#_12" title="Permanent link"></a></h2>
+<p>乘法和除法优先级高于加法和减法，赋值运算符的优先级非常低，通常总是最后执行</p>
+<h2 id="_13">运算符的结合性<a class="headerlink" href="#_13" title="Permanent link"></a></h2>
+<p>一元操作符、赋值和三元条件运算符都是从右至左的结合性</p>
+<h2 id="_14">运算顺序<a class="headerlink" href="#_14" title="Permanent link"></a></h2>
+<p>JavaScript严格按照从左至右的顺序计算表达式</p>
+<h1 id="_15">算术表达式<a class="headerlink" href="#_15" title="Permanent link"></a></h1>
+<h2 id="_16">&rdquo;+&rdquo;运算符<a class="headerlink" href="#_16" title="Permanent link"></a></h2>
+<p>两个操作数不是类字符串，将进行算术加法运算。</p>
+<p>如果操作数其中一个是对象，对象会转换为原始值（日期对象通过toString()转换，其他对象通过valueof()方法，不具备toString()方法的通过valueof()转换）
+如果一个操作数转换后是字符串，则另外一个操作数也转换为字符串然后连接
+否则两个操作数转换成数字进行加法操作</p>
+<h2 id="_17">一元算术运算符<a class="headerlink" href="#_17" title="Permanent link"></a></h2>
+<h2 id="_18">位运算符<a class="headerlink" href="#_18" title="Permanent link"></a></h2>
+<h1 id="_19">关系表达式<a class="headerlink" href="#_19" title="Permanent link"></a></h1>
+<h2 id="_20">相等和不等运算符<a class="headerlink" href="#_20" title="Permanent link"></a></h2>
+<p>&rdquo;===&rdquo; 恒等运算符，检测两个操作数是否严格相等，首先比较操作数的值是否相等，再比较有没有类型转换。
+&ldquo;==&rdquo; 相等运算符，检测两个运算符是否相等，这里的相等允许类型转换。</p>
+<h2 id="_21">比较运算符<a class="headerlink" href="#_21" title="Permanent link"></a></h2>
+<p>如果需要转换，则首先使用valueof()方法，否则使用toString()</p>
+<p><strong>加号运算符偏向于字符串连接。比较运算符偏向于数字比较，只有两个操作数都是字符串的时候才进行字符串比较</strong></p>
+<h2 id="in">in 运算符<a class="headerlink" href="#in" title="Permanent link"></a></h2>
+<p>in左边的操作数是一个字符串或者可以转换成字符串，右侧是一个对象，如果右侧的对象拥有左侧操作数值的属性名，则表达式true</p>
+<h2 id="instanceof">instanceof 运算符<a class="headerlink" href="#instanceof" title="Permanent link"></a></h2>
+<p>左侧操作数是一个对象，右侧是对象的类.instanceof判断对象是否属于某个类的实例的时候也会包含对父类的检测。
+<div class="codehilite"><pre>object instanceof Object
+</pre></div></p>
+<h1 id="_22">逻辑表达式<a class="headerlink" href="#_22" title="Permanent link"></a></h1>
+<h2 id="typeof">typeof 运算符<a class="headerlink" href="#typeof" title="Permanent link"></a></h2>
+<table>
+<thead>
+<tr>
+<th align="center">x</th>
+<th align="center">typeof x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">undefined</td>
+<td align="center">&ldquo;undefined&rdquo;</td>
+</tr>
+<tr>
+<td align="center">null</td>
+<td align="center">&ldquo;object&rdquo;</td>
+</tr>
+<tr>
+<td align="center">true或false</td>
+<td align="center">&ldquo;boolean&rdquo;</td>
+</tr>
+<tr>
+<td align="center">任意数字或NaN</td>
+<td align="center">&ldquo;number&rdquo;</td>
+</tr>
+<tr>
+<td align="center">任意字符串</td>
+<td align="center">&ldquo;string&rdquo;</td>
+</tr>
+<tr>
+<td align="center">任意函数</td>
+<td align="center">&ldquo;function&rdquo;</td>
+</tr>
+<tr>
+<td align="center">任意内置对象（非函数）</td>
+<td align="center">&ldquo;object&rdquo;</td>
+</tr>
+<tr>
+<td align="center">任意宿主对象</td>
+<td align="center">由编译器实现</td>
+</tr>
+</tbody>
+</table>
+<h2 id="delete">delete 运算符<a class="headerlink" href="#delete" title="Permanent link"></a></h2>
+<p>删除对象属性或者数组元素</p></article></body></html>
