@@ -1055,145 +1055,39 @@ body .markdown-body
 .codehilite .vi{color:teal}
 .codehilite .il{color:#009999}
 .codehilite .gc{color:#999;background-color:#EAF2F5}
-</style><title>ReadMe</title></head><body><article class="markdown-body"><p>第6章  对象
-JavaScript对象可理解成熟字符串到值的映射。</p>
-<p>JavaScript对象还可以从一个称为原型的对象继承属性，对象的方法通常是继承的属性</p>
-<p>JavaScript对象是动态的，可以增删属性，但是通常模拟静态对象。</p>
-<p>除了字符串，数字，false,true,null和undefined之外，JavaScript中的值都是对象</p>
-<p><strong>对象的属性有三个“属性特性”：</strong></p>
-<ol>
-<li>可写（设置属性值）</li>
-<li>可枚举（通过for/in循环返回属性）</li>
-<li>可配置（可删除或者修改属性）</li>
-</ol>
-<p><strong>另外，对象还有三个“对象特性”：</strong></p>
-<ol>
-<li>对象的原型（prototype）指向另外一个对象，本对象的属性继承自它的原型对象</li>
-<li>对象的类，是一个标识对象类型的字符串</li>
-<li>对象的扩展标记，指明了是否可以向该对象添加新的属性</li>
-</ol>
-<p><strong>JavaScript对象可分为三类:</strong></p>
-<ol>
-<li>内置对象(native object).数组，函数，日期，正则表达式这些又ECMAscript定义的</li>
-<li>宿主对象(host object)又javascript解释器嵌入的宿主和环境，比如浏览器定义的。</li>
-<li>自定义对象，又代码创建</li>
-</ol>
-<p><strong>JavaScript对象属性可分为两类:</strong></p>
-<ol>
-<li>自有属性，直接在对象中定义的属性</li>
-<li>继承属性，从对象的原型对象中继承的</li>
-</ol>
-<h1 id="_1">创建对象<a class="headerlink" href="#_1" title="Permanent link"></a></h1>
-<p>创建对象可以通过：</p>
-<ol>
-<li>对象直接量</li>
-<li>关键字<code>new</code></li>
-<li>Object.create()</li>
-</ol>
-<h2 id="_2">对象直接量<a class="headerlink" href="#_2" title="Permanent link"></a></h2>
-<p>对象直接量是由若干名／值低组成的映射表</p>
-<p>属性名可以是标识符也可以说字符串直接量。</p>
-<h2 id="new">通过new创建对象<a class="headerlink" href="#new" title="Permanent link"></a></h2>
-<div class="codehilite"><pre>var o=new Object();
+</style><title>ReadMe</title></head><body><article class="markdown-body"><p>第7章 数组
+JavaScript数组是无类型的，元素可以是任意类型</p>
+<h1 id="_1">创建数组<a class="headerlink" href="#_1" title="Permanent link"></a></h1>
+<p><div class="codehilite"><pre>var arr=[];
 var a=new Array();
-var d=new Date();
-var r=new RegExp(&quot;js&quot;);
+</pre></div>
+对于空缺的数组项，用<code>undefined</code></p>
+<h1 id="_2">数组元素的读和写<a class="headerlink" href="#_2" title="Permanent link"></a></h1>
+<p>通过<code>[]</code>操作符来访问或者设置数组中的元素</p>
+<h1 id="_3">稀疏数组<a class="headerlink" href="#_3" title="Permanent link"></a></h1>
+<p>从索引位置0开始的不连续的数组</p>
+<h1 id="_4">数组长度<a class="headerlink" href="#_4" title="Permanent link"></a></h1>
+<p>设置数组长度将会改变数组的内容</p>
+<h1 id="_5">数组元素的添加和删除<a class="headerlink" href="#_5" title="Permanent link"></a></h1>
+<p>同过赋值表达式添加数组元素，或者使用<code>push()</code>方法在数组末尾添加元素，
+可以使用<code>unshift()</code>在数组首部插入元素</p>
+<p>通过<code>delete</code>删除数组元素，但不会影响数组的<code>length</code>,而且数组的其他元素不受影响</p>
+<h1 id="_6">数组遍历<a class="headerlink" href="#_6" title="Permanent link"></a></h1>
+<p>使用For循环遍历数组</p>
+<h1 id="_7">多维数组<a class="headerlink" href="#_7" title="Permanent link"></a></h1>
+<div class="codehilite"><pre>//创建多维数组
+var table=new Array(10);
+    for(var i=0;i&lt;table.length;i++){
+        table[i]=new Array(10);
+}
+//遍历初始化二位数组
+for(var row=0;row&lt;table.length;row++){
+    for(var col=0;col&lt;table[row].length;col++){
+            table[row][col]=row*col;
+   }
+}
 </pre></div>
 
-<h2 id="_3">原型<a class="headerlink" href="#_3" title="Permanent link"></a></h2>
-<p>每一个对象都从原型继承属性，所有通过对象直接量创建的对象都有同一个原型对象，可通过<code>Object.prototype</code>获得对原型对象的引用。</p>
-<h2 id="objectcreate">Object.create()<a class="headerlink" href="#objectcreate" title="Permanent link"></a></h2>
-<p><div class="codehilite"><pre>Object.create(prototype_object)
-</pre></div>
-prototype_object 是原型对象，比如 {x:1,y:2}</p>
-<div class="codehilite"><pre>var o=Object.create({x:1,y:2});
-o.x =&gt;1
-o.y =&gt;2
-</pre></div>
-
-<h1 id="_4">属性的查询和设置<a class="headerlink" href="#_4" title="Permanent link"></a></h1>
-<p>通过点(<code>.</code>)或者方括号(<code>[]</code>)运算符来获取或者设置属性值</p>
-<h2 id="_5">继承<a class="headerlink" href="#_5" title="Permanent link"></a></h2>
-<p>JavaScript对象有自有属性(pwn property)，也有一些属性是从原型对象继承而来。</p>
-<p>对象属性的查询是从对象本身开始，如果没有则从对象原型继续查询，直到原型是null为止</p>
-<h2 id="_6">属性访问错误<a class="headerlink" href="#_6" title="Permanent link"></a></h2>
-<p>查询一个对象的属性，从自有或者原型那里继承的都没查询到，那会返回undefined.</p>
-<p><strong>以下场景给对象设置属性会失败：</strong></p>
-<ol>
-<li>对象的属性是只读的</li>
-<li>对象的属性是继承而来而且是只读的；不能覆盖和原型属性同名的只读继承属性</li>
-<li>对象的可扩展性是false</li>
-</ol>
-<h1 id="_7">删除属性<a class="headerlink" href="#_7" title="Permanent link"></a></h1>
-<p>detele 只能删除自有属性，不能删除继承属性</p>
-<h1 id="_8">检测属性<a class="headerlink" href="#_8" title="Permanent link"></a></h1>
-<p><div class="codehilite"><pre>objectName.hasOwnProperty(&quot;propertyName&quot;)
-</pre></div>
-自有属性可枚举:</p>
-<div class="codehilite"><pre>objectName.propertyIsEnumerable(&quot;propertyName&quot;)
-</pre></div>
-
-<h1 id="_9">枚举属性<a class="headerlink" href="#_9" title="Permanent link"></a></h1>
-<div class="codehilite"><pre>var o={x:1,y:2,z:3};
-for(p in o)
-console.log(p); 
-</pre></div>
-
-<h1 id="gettersetter">属性getter和setter<a class="headerlink" href="#gettersetter" title="Permanent link"></a></h1>
-<p>由getter和setter定义的属性称作存取器属性（accessor property）
-getter返回的值就是属性存取表达式的值，setter用来设置属性存取器的值</p>
-<h1 id="_10">属性的特征<a class="headerlink" href="#_10" title="Permanent link"></a></h1>
-<p>数据属性有4个特性：</p>
-<p><div class="codehilite"><pre>value
-writable
-enumerable
-configurable
-</pre></div>
-存取器属性:</p>
-<div class="codehilite"><pre>get
-set
-enumerable
-configurable
-</pre></div>
-
-<h1 id="_11">对象的三个属性<a class="headerlink" href="#_11" title="Permanent link"></a></h1>
-<ol>
-<li>prototype 原型</li>
-<li>class 类型</li>
-<li>extensible attribute 可扩展性</li>
-</ol>
-<h2 id="_12">原型属性<a class="headerlink" href="#_12" title="Permanent link"></a></h2>
-<p>对象的原型属性用来继承（原型对象）属性的
-检测一个对象是否是另外一个对象的原型（或处于原型链中）
-<div class="codehilite"><pre>objectName.isPrototypeOf(anotherObjectName)
-</pre></div></p>
-<h2 id="_13">类属性<a class="headerlink" href="#_13" title="Permanent link"></a></h2>
-<h2 id="_14">可扩展性<a class="headerlink" href="#_14" title="Permanent link"></a></h2>
-<p>对象默认可以扩展，可以使用以下方法更改
-<div class="codehilite"><pre>Object.preventExtensions()
-</pre></div>
-另外
-<div class="codehilite"><pre>Object.seal()
-</pre></div>
-除了可以禁止对象扩展，还可以将对象的属性都设置为不可配置</p>
-<p>如果想判断对象是否可以扩展:
-<div class="codehilite"><pre>Object.isEx张颖晴tensible()
-</pre></div></p>
-<h1 id="_15">序列化对象<a class="headerlink" href="#_15" title="Permanent link"></a></h1>
-<p>将对象的状态转化为字符串</p>
-<div class="codehilite"><pre>//序列化对象
-var s=JSON.stringify(objectName);
-
-//还原对象
-JSON.parse(s);
-</pre></div>
-
-<h1 id="_16">对象方法<a class="headerlink" href="#_16" title="Permanent link"></a></h1>
-<h2 id="tostring">toString()方法<a class="headerlink" href="#tostring" title="Permanent link"></a></h2>
-<p>返回调用对象值的字符串</p>
-<h2 id="tolocalestring">toLocaleString()方法<a class="headerlink" href="#tolocalestring" title="Permanent link"></a></h2>
-<p>对象的本地化字符串</p>
-<h2 id="tojson">toJSON()方法<a class="headerlink" href="#tojson" title="Permanent link"></a></h2>
-<p>返回对象的序列化（字符串）</p>
-<h2 id="valueof">valueOf()方法<a class="headerlink" href="#valueof" title="Permanent link"></a></h2>
-<p>对象转换为原始值</p></article></body></html>
+<h1 id="_8">数组方法<a class="headerlink" href="#_8" title="Permanent link"></a></h1>
+<h2 id="join">join()<a class="headerlink" href="#join" title="Permanent link"></a></h2>
+<p>Array.join() 将数组中所有元素都</p></article></body></html>

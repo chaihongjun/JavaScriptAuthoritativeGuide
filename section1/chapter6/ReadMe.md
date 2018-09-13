@@ -102,3 +102,92 @@ objectName.hasOwnProperty("propertyName")
 ```
 objectName.propertyIsEnumerable("propertyName")
 ```
+
+
+# 枚举属性
+
+```
+var o={x:1,y:2,z:3};
+for(p in o)
+console.log(p); 
+```
+
+# 属性getter和setter
+由getter和setter定义的属性称作存取器属性（accessor property）
+getter返回的值就是属性存取表达式的值，setter用来设置属性存取器的值
+
+
+# 属性的特征
+
+数据属性有4个特性：
+
+```
+value
+writable
+enumerable
+configurable
+```
+存取器属性:
+
+```
+get
+set
+enumerable
+configurable
+```
+
+# 对象的三个属性
+
+1. prototype 原型
+2. class 类型
+3. extensible attribute 可扩展性
+
+## 原型属性
+对象的原型属性用来继承（原型对象）属性的
+检测一个对象是否是另外一个对象的原型（或处于原型链中）
+```
+objectName.isPrototypeOf(anotherObjectName)
+```
+
+## 类属性
+
+## 可扩展性
+对象默认可以扩展，可以使用以下方法更改
+```
+Object.preventExtensions()
+```
+另外
+```
+Object.seal()
+```
+除了可以禁止对象扩展，还可以将对象的属性都设置为不可配置
+
+
+如果想判断对象是否可以扩展:
+```
+Object.isEx张颖晴tensible()
+```    
+
+# 序列化对象
+将对象的状态转化为字符串
+
+```
+//序列化对象
+var s=JSON.stringify(objectName);
+
+//还原对象
+JSON.parse(s);
+```
+
+# 对象方法
+## toString()方法
+返回调用对象值的字符串
+
+## toLocaleString()方法
+对象的本地化字符串
+
+## toJSON()方法
+返回对象的序列化（字符串）
+
+## valueOf()方法
+对象转换为原始值
